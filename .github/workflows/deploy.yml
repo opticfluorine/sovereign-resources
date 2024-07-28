@@ -60,6 +60,6 @@ jobs:
           chmod 600 key
           mkdir -p ~/.ssh
           ssh-keyscan -p $TARGET_PORT $TARGET_HOST >> ~/.ssh/known_hosts
-          scp -i key -P $TARGET_PORT $RELEASE_ID $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
+          scp -r -i key -P $TARGET_PORT $RELEASE_ID $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
           scp -i key -P $TARGET_PORT release.json $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
           rm key
