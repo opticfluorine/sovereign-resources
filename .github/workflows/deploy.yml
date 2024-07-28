@@ -56,7 +56,7 @@ jobs:
         run: |
           RELEASE_ID=`jq -r .releaseId release.json`
           mv Data $RELEASE_ID
-          echo $DEPLOY_KEY > key
+          echo ${{ github.ref == 'refs/heads/main' && secrets.PROD_DEPLOY_KEY || secrets.DEV_DEPLOY_KEY }} > key
           scp -i key -P $TARGET_PORT $RELEASE_ID $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
           scp -i key -P $TARGET_PORT release.json $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
           rm key
