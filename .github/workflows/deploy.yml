@@ -45,6 +45,14 @@ jobs:
       - name: Generate index and release files
         run: dotnet run --project sovereign/src/Util/CreateUpdaterResourceSet -c Release Data
 
+      - name: Compress static files
+        run: |
+          for F in `find Data -xtype f`
+          do
+            gzip -k $F
+          done
+          gzip -k release.json
+
       # Prepare files for deployment
       - name: Deploy files to update server
         env:
