@@ -45,13 +45,20 @@ jobs:
       - name: Generate index and release files
         run: dotnet run --project sovereign/src/Util/CreateUpdaterResourceSet -c Release Data
 
+      # Compress any files which benefit
       - name: Compress static files
         run: |
           for F in `find Data -xtype f`
           do
-            gzip -k $F
+            echo "Compressing $F."
+            gzip -k9 $F
+            OLDSIZE=`stat --printf='%s' $F`
+            NEWSIZE=`stat --printf='%s' $F.gz`
+            if [ $NEWSIZE -ge $OLDSIZE ]; then
+              rm $F.gz
+              echo "Skipping compression for $F: file size not decreased."
+            fi
           done
-          gzip -k release.json
 
       # Prepare files for deployment
       - name: Deploy files to update server
