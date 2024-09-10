@@ -1,6 +1,6 @@
-﻿# Spritesheet definition for grass_and_dirt.png
+﻿# Spritesheet definition for blocks.png
 #
-# grass_and_dirt.png is an original spritesheet created
+# blocks.png is an original spritesheet created
 # for Sovereign Engine by opticfluorine. It is released
 # under the Creative Commons Attribution-ShareAlike 4.0
 # license.
@@ -9,7 +9,7 @@
 ---
 
 # Spritesheet definition
-Filename: grass_and_dirt.png
+Filename: blocks.png
 SpriteWidth: 32
 SpriteHeight: 32
 
