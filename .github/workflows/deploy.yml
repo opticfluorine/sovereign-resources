@@ -78,5 +78,5 @@ jobs:
           scp -r -i key -P $TARGET_PORT $RELEASE_ID $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
           scp -i key -P $TARGET_PORT release.json $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
           mv Screenshots/ screenshots/
-          rsync -e "ssh -v -i key -p $TARGET_PORT -l $REMOTE_USER" -dvz screenshots $REMOTE_USER@$TARGET_HOST::updates
+          rsync -e "ssh -v -i key -p $TARGET_PORT -l $REMOTE_USER" -rvz screenshots $REMOTE_USER@$TARGET_HOST::updates
           rm key
