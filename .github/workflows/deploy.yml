@@ -66,7 +66,6 @@ jobs:
           TARGET_HOST: ${{ secrets.TARGET_HOST }}
           TARGET_PORT: ${{ secrets.TARGET_PORT }}
           REMOTE_USER: ${{ github.ref == 'refs/heads/main' && 'deploy-updates' || 'deploy-updates-dev' }}
-          TARGET_DIR: ${{ github.ref == 'refs/heads/main' && 'update' || 'update-dev' }}
           DEPLOY_KEY: ${{ github.ref == 'refs/heads/main' && secrets.PROD_DEPLOY_KEY || secrets.DEV_DEPLOY_KEY }}
         run: |
           RELEASE_ID=`jq -r .releaseId release.json`
@@ -75,8 +74,6 @@ jobs:
           chmod 600 key
           mkdir -p ~/.ssh
           ssh-keyscan -p $TARGET_PORT $TARGET_HOST >> ~/.ssh/known_hosts
-          scp -r -i key -P $TARGET_PORT $RELEASE_ID $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
-          scp -i key -P $TARGET_PORT release.json $REMOTE_USER@$TARGET_HOST:/var/www/$TARGET_DIR/
-          mv Screenshots/ screenshots/
-          rsync -e "ssh -v -i key -p $TARGET_PORT -l $REMOTE_USER" -rvz screenshots $REMOTE_USER@$TARGET_HOST::updates
+          mv Screenshots screenshots
+          rsync -e "ssh -v -i key -p $TARGET_PORT -l $REMOTE_USER" -rvz $RELEASE_ID release.json screenshots $REMOTE_USER@$TARGET_HOST::updates
           rm key
