@@ -1,0 +1,18 @@
+﻿# Spritesheet definition for trees_96x128px.png
+#
+# trees_96x128px.png is an original spritesheet created
+# for Sovereign Engine by opticfluorine. It is released
+# under the Creative Commons Attribution-ShareAlike 4.0
+# license.
+#
+
+---
+
+# Spritesheet definition
+Filename: trees_96x128px.png
+SpriteWidth: 96
+SpriteHeight: 128
+
+# Rights metadata
+Author: opticfluorine
+License: CC BY-SA 4.0
