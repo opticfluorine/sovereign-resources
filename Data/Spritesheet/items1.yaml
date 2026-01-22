@@ -1,0 +1,19 @@
+﻿# Spritesheet definition for items1.png
+#
+# items1.png is part of the Liberated Pixel Cup assets, retrieved from
+#   https://opengameart.org/content/lpc-items-and-game-effects
+# on January 21, 2026.
+#
+
+---
+
+# Spritesheet definition
+Filename: items1.png
+SpriteWidth: 32
+SpriteHeight: 32
+
+# Rights metadata
+Author: |
+  Tuomo Untinen, Johannes Sjölund AKA Wulax, Daniel Eddeland, Jetrel,
+  Gwes, Nila122, Jaidyn Reiman, ArtisticDude
+License: CC-BY-SA 3.0, GPLv3 (Dual License)
